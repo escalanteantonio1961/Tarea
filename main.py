@@ -39,3 +39,51 @@ fig_sector = go.Figure(data=[
 
 fig_sector.update_layout(barmode='stack', title='Ratios Financieros por Sector')
 st.plotly_chart(fig_sector, use_container_width=True)
+# Instanciar el cliente de OpenAI
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+client = openai.OpenAI(api_key=openai_api_key)
+
+def obtener_respuesta(prompt):
+  response = client.chat.completions.create(
+      model="gpt-4o-mini",  # Ajusta el modelo según lo que necesites
+      messages=[
+          {"role": "system", "content": """
+         Eres un inversionista que desea invertir en acciones # Instanciar el cliente de OpenAI
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+client = openai.OpenAI(api_key=openai_api_key)
+
+def obtener_respuesta(prompt):
+  response = client.chat.completions.create(
+      model="gpt-4o-mini",  # Ajusta el modelo según lo que necesites
+      messages=[
+          {"role": "system", "content": """
+          eres experto en el sector financiero, entonces vas a responder todo desde la perspectiva del inversionista. Contesta siempre en español
+          en un máximo de 50 palabras.
+          """}, #Solo podemos personalizar la parte de content
+          {"role": "user", "content": prompt}
+      ]
+  )
+  output = response.choices[0].message.content
+  return output
+
+prompt_user= st.text_area("Ingresa tu pregunta: ")
+
+# Obtener la respuesta del modelo
+output_modelo = obtener_respuesta(prompt_user)
+
+# Mostrar la respuesta del modelo
+st.write(output_modelo)
+          """}, #Solo podemos personalizar la parte de content
+          {"role": "user", "content": prompt}
+      ]
+  )
+  output = response.choices[0].message.content
+  return output
+
+prompt_user= st.text_area("Ingresa tu pregunta: ")
+
+# Obtener la respuesta del modelo
+output_modelo = obtener_respuesta(prompt_user)
+
+# Mostrar la respuesta del modelo
+st.write(output_modelo)
