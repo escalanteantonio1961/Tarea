@@ -57,7 +57,8 @@ def obtener_respuesta(prompt):
       model="gpt-4o-mini",  # Ajusta el modelo según lo que necesites
       messages=[
           {"role": "system", "content": """
-          eres experto en el sector financiero, entonces vas a responder todo desde la perspectiva del inversionista. Contesta siempre en español
+          Eres un financiero que trabaja para la aseguradora patito, eres experto en el área de solvencia,
+          entonces vas a responder todo desde la perspectiva de la aseguradora. Contesta siempre en español
           en un máximo de 50 palabras.
           """}, #Solo podemos personalizar la parte de content
           {"role": "user", "content": prompt}
