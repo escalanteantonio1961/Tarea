@@ -48,15 +48,6 @@ def obtener_respuesta(prompt):
       model="gpt-4o-mini",  # Ajusta el modelo según lo que necesites
       messages=[
           {"role": "system", "content": """
-         Eres un inversionista que desea invertir en acciones # Instanciar el cliente de OpenAI
-openai_api_key = st.secrets["OPENAI_API_KEY"]
-client = openai.OpenAI(api_key=openai_api_key)
-
-def obtener_respuesta(prompt):
-  response = client.chat.completions.create(
-      model="gpt-4o-mini",  # Ajusta el modelo según lo que necesites
-      messages=[
-          {"role": "system", "content": """
           Eres un financiero que trabaja para la aseguradora patito, eres experto en el área de solvencia,
           entonces vas a responder todo desde la perspectiva de la aseguradora. Contesta siempre en español
           en un máximo de 50 palabras.
